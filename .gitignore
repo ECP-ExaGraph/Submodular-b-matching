@@ -1,0 +1,12 @@
+dataset
+build
+local
+*temp*
+*.swp
+*.swo
+*.out
+llg
+lg
+shmllg
+.ipynb*
+data

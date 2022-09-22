@@ -1,0 +1,29 @@
+cmake_minimum_required(VERSION 3.18)
+
+project(ResourceAllocation VERSION 1.0 LANGUAGES  CXX
+    DESCRIPTION "Resource Allocation")
+
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_NO_SYSTEM_FROM_IMPORTED ON)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+set(CMAKE_FIND_PACKAGE_NO_PACKAGE_REGISTRY ON)
+
+if(NOT CMAKE_BUILD_TYPE)
+    set (CMAKE_BUILD_TYPE Release)
+endif()
+
+if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+  include(CTest)
+endif()
+
+option(SUBMOD_ENABLE_TESTS "Enable Unit Tests" ON)
+
+# Add sources
+add_subdirectory(src)
+
+# Add tests
+if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME AND SUBMOD_ENABLE_TESTS AND BUILD_TESTING)
+  add_subdirectory(tests)
+endif()
